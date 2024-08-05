@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 
-function Duck() {
-    const [duck, setDuck] = useState(null);
+function User() {
+    const [user, setUser] = useState(null);
     const [error, setError] = useState(null);
   
     useEffect(() => {
-      fetch(`http://localhost:8080/ducks/1`, { method: "GET" })  // Added 'http://'
+      fetch(`http://localhost:8080/users/user1`, { method: "GET" })  // Added 'http://'
         .then((response) => {
           if (!response.ok) throw new Error("Network response was not ok");
           return response.json();
         })
         .then((data) => {
-          setDuck(data);
+          setUser(data);
         })
         .catch((error) => {
           setError(error.message);  // Extracted the error message for better display
@@ -22,7 +22,7 @@ function Duck() {
       return <div>Error: {error}, so no</div>;
     }
   
-    if (!duck) {
+    if (!user) {
       return <div>no</div>;  // Changed from "no" to "Loading..."
     }
   
@@ -31,31 +31,23 @@ function Duck() {
         <tbody>
           <tr>
             <td>id:</td>
-            <td>{duck.duckId}</td>
+            <td>{user.userId}</td>
           </tr>
           <tr>
-            <td>name:</td>
-            <td>{duck.name}</td>
+            <td>username:</td>
+            <td>{user.username}</td>
           </tr>
           <tr>
-            <td>description:</td>
-            <td>{duck.description}</td>
+            <td>email:</td>
+            <td>{user.email}</td>
           </tr>
           <tr>
             <td>rarity:</td>
-            <td>{duck.rarity}</td>
-          </tr>
-          <tr>
-            <td>condition:</td>
-            <td>{duck.condition}</td>
-          </tr>
-          <tr>
-            <td>price:</td>
-            <td>${duck.price}</td>
+            <td>{user.registrationDate}</td>
           </tr>
         </tbody>
       </table>
     );
   }
   
-  export default Duck;
+  export default User;

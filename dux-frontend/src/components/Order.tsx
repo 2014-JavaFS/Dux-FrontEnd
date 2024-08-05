@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 
-function Duck() {
-    const [duck, setDuck] = useState(null);
+function Order() {
+    const [order, setOrder] = useState(null);
     const [error, setError] = useState(null);
   
     useEffect(() => {
-      fetch(`http://localhost:8080/ducks/1`, { method: "GET" })  // Added 'http://'
+      fetch(`http://localhost:8080/orders/1`, { method: "GET" })  // Added 'http://'
         .then((response) => {
           if (!response.ok) throw new Error("Network response was not ok");
           return response.json();
         })
         .then((data) => {
-          setDuck(data);
+          setOrder(data);
         })
         .catch((error) => {
           setError(error.message);  // Extracted the error message for better display
@@ -22,7 +22,7 @@ function Duck() {
       return <div>Error: {error}, so no</div>;
     }
   
-    if (!duck) {
+    if (!order) {
       return <div>no</div>;  // Changed from "no" to "Loading..."
     }
   
@@ -31,31 +31,35 @@ function Duck() {
         <tbody>
           <tr>
             <td>id:</td>
-            <td>{duck.duckId}</td>
+            <td>{order.orderId}</td>
           </tr>
           <tr>
-            <td>name:</td>
-            <td>{duck.name}</td>
+            <td>buyer:</td>
+            <td>{order.buyer.username}</td>
           </tr>
           <tr>
-            <td>description:</td>
-            <td>{duck.description}</td>
+            <td>seller:</td>
+            <td>{order.seller.username}</td>
           </tr>
           <tr>
-            <td>rarity:</td>
-            <td>{duck.rarity}</td>
+            <td>duck:</td>
+            <td>{order.duck.name}</td>
           </tr>
           <tr>
-            <td>condition:</td>
-            <td>{duck.condition}</td>
+            <td>order date:</td>
+            <td>{order.orderDate}</td>
           </tr>
           <tr>
-            <td>price:</td>
-            <td>${duck.price}</td>
+            <td>status:</td>
+            <td>{order.status}</td>
+          </tr>
+          <tr>
+            <td>quantity:</td>
+            <td>{order.quantity}</td>
           </tr>
         </tbody>
       </table>
     );
   }
   
-  export default Duck;
+  export default Order;
