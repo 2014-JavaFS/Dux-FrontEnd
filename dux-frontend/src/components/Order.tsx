@@ -5,7 +5,7 @@ function Order() {
     const [error, setError] = useState(null);
   
     useEffect(() => {
-      fetch(`http://localhost:8080/orders/1`, { method: "GET" })  // Added 'http://'
+      fetch(`http://localhost:8080/orders/1`, { method: "GET" })
         .then((response) => {
           if (!response.ok) throw new Error("Network response was not ok");
           return response.json();
@@ -14,7 +14,7 @@ function Order() {
           setOrder(data);
         })
         .catch((error) => {
-          setError(error.message);  // Extracted the error message for better display
+          setError(error.message);
         });
     }, []);
   
@@ -23,7 +23,7 @@ function Order() {
     }
   
     if (!order) {
-      return <div>no</div>;  // Changed from "no" to "Loading..."
+      return <div>no</div>; 
     }
   
     return (

@@ -5,7 +5,7 @@ function User() {
     const [error, setError] = useState(null);
   
     useEffect(() => {
-      fetch(`http://localhost:8080/users/user1`, { method: "GET" })  // Added 'http://'
+      fetch(`http://localhost:8080/users/user1`, { method: "GET" })
         .then((response) => {
           if (!response.ok) throw new Error("Network response was not ok");
           return response.json();
@@ -14,7 +14,7 @@ function User() {
           setUser(data);
         })
         .catch((error) => {
-          setError(error.message);  // Extracted the error message for better display
+          setError(error.message);
         });
     }, []);
   
@@ -23,7 +23,7 @@ function User() {
     }
   
     if (!user) {
-      return <div>no</div>;  // Changed from "no" to "Loading..."
+      return <div>no</div>;
     }
   
     return (
