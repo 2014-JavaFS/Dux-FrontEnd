@@ -1,27 +1,25 @@
 import { useEffect, useState } from "react";
+import { duxServer } from "../common/dux-server";
 
 // probably using a direct input Id for now but need to be auto getting this
 // id from the persisted id of the logged in user from a context object probably
 export default function GetCart({ userId }) {
-    const [cart, setCart] = useState(null);
+    const [cart, setCart] = useState([]);
     const [error, setError] = useState(null);
   
     useEffect(() => {
-      fetch(`http://localhost:8080/orders/getByBuyer/${userId}`, { method: "GET" })
+      duxServer
+        .get(`/orders/cart?userId=${userId}`)
         .then((response) => {
-          if (!response.ok) throw new Error("Network response was not ok");
-          return response.json();
-        })
-        .then((data) => {
-          setCart(data);
+          setCart(response.data);
         })
         .catch((error) => {
           setError(error.message);
         });
     }, [userId]);
-
-    if (error) return <div>Error: {error}, so no, meep merp</div>;
-    if (!cart) return <div>order was null</div>;
+  
+    if (error) return <div>Error: {error}, so no meep merp</div>;
+    if (!cart) return <div>no</div>;
 
     return(
         <div>
