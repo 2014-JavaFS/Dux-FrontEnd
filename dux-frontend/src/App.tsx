@@ -4,6 +4,7 @@ import Duck from "./components/duck-info";
 import DuckList from "./components/duck-list";
 import Order from "./components/order-info";
 import User from "./components/user-info";
+import GetCart from "./components/get-cart";
 
 function App() {
   //const username = "user2";
@@ -65,6 +66,11 @@ function App() {
         </tbody>
       </table>
       <DuckList />
+      <div>
+        {//currently using the same input as orderId for easy testing
+        }
+        <GetCart userId = {orderId}/>
+      </div>
     </>
   );
 }
