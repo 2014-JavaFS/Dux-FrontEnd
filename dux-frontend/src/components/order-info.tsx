@@ -20,7 +20,7 @@ export default function Order({ id }) {
       });
   }, [id]);
 
-  if (error) return <div>Error: {error}, so no</div>; 
+  if (error) return <div>Error: {error}, so no</div>;
   if (!order) return <div>no</div>;
 
   return (

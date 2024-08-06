@@ -19,7 +19,7 @@ function User({ username }) {
         setError(error.message);
       });
   }, [username]);
-  
+
   if (error) return <div>Error: {error}, so no</div>;
   if (!user) return <div>no</div>;
 

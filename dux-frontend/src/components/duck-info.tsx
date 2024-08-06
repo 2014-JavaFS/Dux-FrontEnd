@@ -19,7 +19,7 @@ export default function Duck({ id }) {
         setError(error.message);
       });
   }, [id]);
-  
+
   if (error) return <div>Error: {error}, so no</div>;
   if (!duck) return <div>no</div>;
 
