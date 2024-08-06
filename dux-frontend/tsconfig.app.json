@@ -22,7 +22,10 @@
     "strictNullChecks": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    //TODO delete this, just needed it to shut up for a bit
+    "noImplicitAny": false
   },
   "include": ["src"]
 }

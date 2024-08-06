@@ -1,26 +1,32 @@
 import "./App.css";
-import Duck from "./components/Duck";
-import Order from "./components/Order";
-import User from "./components/User";
+import Duck from "./components/duck-info";
+import DuckList from "./components/duck-list";
+import Order from "./components/order-info";
+import User from "./components/user-info";
 
 function App() {
+  const username = "user2";
+  const duckId = 5;
+  const orderId = 4;
+
   return (
     <>
-      <div>
-        <h1>can i display a user?</h1>
-        <User />
-        <p className="read-the-docs">(the answer is probably no)</p>
-      </div>
-      <div>
-        <h1>can i display a duck?</h1>
-        <Duck />
-        <p className="read-the-docs">(the answer is probably no)</p>
-      </div>
-      <div>
-        <h1>can i display an order?</h1>
-        <Order />
-        <p className="read-the-docs">(the answer is probably no)</p>
-      </div>
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <Duck id={duckId} />
+            </td>
+            <td>
+              <Order id={orderId} />
+            </td>
+            <td>
+              <User username={username} />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <DuckList />
     </>
   );
 }
