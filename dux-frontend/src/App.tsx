@@ -2,9 +2,10 @@ import { useRef, useState } from "react";
 import "./App.css";
 import Duck from "./components/duck-info";
 import DuckList from "./components/duck-list";
+import GetCart from "./components/get-cart";
+import Navbar from "./components/navbar";
 import Order from "./components/order-info";
 import User from "./components/user-info";
-import GetCart from "./components/get-cart";
 
 function App() {
   //const username = "user2";
@@ -36,6 +37,7 @@ function App() {
 
   return (
     <>
+      <Navbar/>
       <table>
         <tbody>
           <tr>
