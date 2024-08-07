@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "./App.tsx";
 import DuckList from "./components/duck-list.tsx";
-import GetCart from "./components/get-cart.tsx";
 import Register from './components/register.tsx';
 import User from './components/user-info.tsx';
 import "./index.css";

@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 import { duxServer } from "../common/dux-server";
 
-// "Binding element 'id' implicitly has an 'any' type.ts(7031)"
-// dont know how to fix, but it seems to work anyway so... ¯\_(ツ)_/¯
-export default function Order({ id }) {
-  const [order, setOrder] = useState(null);
+export default function Order( id ) {const [order, setOrder] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -20,7 +17,6 @@ export default function Order({ id }) {
 
   if (error) return <div>Error: {error}, so no</div>;
   if (!order) return <div>no</div>;
-
   return (
     <div className="card">
       <table bgcolor="333333" align="center">

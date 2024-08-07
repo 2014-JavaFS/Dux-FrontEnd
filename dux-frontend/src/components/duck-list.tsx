@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { duxServer } from "../common/dux-server";
+import UserContext from "../contexts/userContext";
 
 // "Binding element 'id' implicitly has an 'any' type.ts(7031)"
 // dont know how to fix, but it seems to work anyway so... ¯\_(ツ)_/¯
 export default function DuckList() {
   const [ducks, setDucks] = useState([]);
   const [error, setError] = useState(null);
+  const { user } = useContext(UserContext);
+  //const user = 1;
 
   useEffect(() => {
     duxServer
@@ -21,58 +24,39 @@ export default function DuckList() {
   if (error) return <div>Error: {error}, so no</div>;
   if (!ducks) return <div>no</div>;
 
+  const seller = 33;
+  function handleAddToCart(duckId) {
+    duxServer
+      .post(
+        `/orders/addToCart?buyer=${user}&seller=${seller}&duck=${duckId}&quantity=1`
+      )
+      .catch((error) => {
+        setError(error.message);
+      });
+  }
+
   return (
     <>
-      <div>
-        <h2>can i display the ducks?</h2>
-        {ducks.map((duck) => (
-          <div className="card" key={duck.duckId}>
-            {makeListItem(duck)}
+      <h2>
+        <u>DUCKS</u>
+      </h2>
+      {ducks.map((duck) => (
+        <>
+          <br />
+          <div key={duck.duckId} className="card">
+          <h4>{duck.name}</h4>
+          <h6>{duck.description}</h6>
+            <h5>
+              {duck.rarity} — {duck.condition}
+            </h5>
+            <p>${duck.price}</p>
+            <br />
+            <button type="submit" onClick={() => handleAddToCart(duck.duckId)}>
+              Add to Cart
+            </button>
           </div>
-        ))}
-      </div>
+        </>
+      ))}
     </>
-  );
-}
-
-function makeListItem(duck) {
-  return (
-    <div className="card">
-      <table bgcolor="333333" align="center">
-        <thead>
-          <tr>
-            <td>
-              <h3>Duck</h3>
-            </td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>id:</td>
-            <td>{duck.duckId}</td>
-          </tr>
-          <tr>
-            <td>name:</td>
-            <td>{duck.name}</td>
-          </tr>
-          <tr>
-            <td>description:</td>
-            <td>{duck.description}</td>
-          </tr>
-          <tr>
-            <td>rarity:</td>
-            <td>{duck.rarity}</td>
-          </tr>
-          <tr>
-            <td>condition:</td>
-            <td>{duck.condition}</td>
-          </tr>
-          <tr>
-            <td>price:</td>
-            <td>${duck.price}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
   );
 }
