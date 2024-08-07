@@ -1,63 +1,50 @@
-import { useState } from 'react';
-
-function LoginComp() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-    if (!email || !password) {
-      setError('Email and Password are required');
-      return;
-    }
-    try {
-      const response = await loginUser(email, password);
-
-      if (response.success) {
-        login(response.user);
-
-        setEmail('');
-        setPassword('');
-
-        navigate('/home');
-      } else {
-        setError(response.message || 'Login failed');
-      }
-    } catch (error) { 
-      setError('An error occured. Please try again.');
-      console.error('Login error', error);
-    }
-    console.log('Login attempt with:', email, password);
+import React, { useState } from 'react'; 
+import axios from 'axios'; 
+import { useNavigate } from 'react-router-dom'; 
+import { 
+    MDBContainer, 
+    MDBInput, 
+    MDBBtn, 
+} from 'mdb-react-ui-kit'; 
   
-
-  return (
-    <div className="login-comp">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Log In</button>
-      </form>
-    </div>
-  );
-  }}
-
-export default LoginComp; 
+function LoginPage() { 
+    const [username, setUsername] = useState(''); 
+    const [password, setPassword] = useState(''); 
+    const [error, setError] = useState(''); 
+    const history = useNavigate(); 
+  
+    const handleLogin = async () => { 
+        try { 
+            if (!username || !password) { 
+                setError('Please enter both username and password.'); 
+                return; 
+            } 
+  
+            const response = await axios.post('http://localhost:8080/auth', { username, password }); 
+            console.log('Login successful:', response.data); 
+            history('/dashboard'); 
+        } catch (error) { 
+            console.error('Login failed:', error.response ? error.response.data : error.message); 
+            setError('Invalid username or password.'); 
+        } 
+    }; 
+  
+    return ( 
+        <div className="d-flex justify-content-center align-items-center vh-100"> 
+            <div className="border rounded-lg p-4" style={{ width: '500px', height: 'auto' }}> 
+                <MDBContainer className="p-3"> 
+                    <h2 className="mb-4 text-center">Login Page</h2> 
+                    <MDBInput wrapperClass='mb-4' placeholder='Email address' id='email' value={username} type='email' onChange={(e) => setUsername(e.target.value)} /> 
+                    <MDBInput wrapperClass='mb-4' placeholder='Password' id='password' type='password' value={password} onChange={(e) => setPassword(e.target.value)} /> 
+                    {error && <p className="text-danger">{error}</p>} {/* Render error message if exists */} 
+                    <button className="mb-4 d-block btn-primary" style={{ height:'50px',width: '100%' }} onClick={handleLogin}>Sign in</button> 
+                    <div className="text-center"> 
+                        <p>Not a member? <a href="/registeration" >Register</a></p> 
+                    </div> 
+                </MDBContainer> 
+            </div> 
+        </div> 
+    ); 
+} 
+  
+export default LoginPage; 
