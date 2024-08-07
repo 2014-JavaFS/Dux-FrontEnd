@@ -8,6 +8,9 @@ import DuckList from "./components/duck-list.tsx";
 import Cart from "./pages/Cart.tsx";
 import User from "./components/user-info.tsx";
 
+{
+  //19 is hardcoded. 23 is hardcoded
+}
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
