@@ -8,6 +8,9 @@ import Register from './components/register.tsx';
 import User from './components/user-info.tsx';
 import "./index.css";
 
+{
+  //19 is hardcoded. 23 is hardcoded
+}
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
