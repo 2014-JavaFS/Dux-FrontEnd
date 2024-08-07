@@ -3,7 +3,7 @@ import { duxServer } from "../common/dux-server";
 
 // "Binding element 'username' implicitly has an 'any' type.ts(7031)"
 // dont know how to fix, but it seems to work anyway so... ¯\_(ツ)_/¯
-function User({ username }) {
+export default function User( username ) {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
 
@@ -53,5 +53,3 @@ function User({ username }) {
     </div>
   );
 }
-
-export default User;
