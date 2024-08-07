@@ -18,7 +18,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Route path='/' element={<App />} />
         <Route path='/users/profile' element={<User username='user1'/>} />
         <Route path='/users/inventory' />
-        <Route path="/" element={<App />} />
         <Route path="/ducks" element={<DuckList />} />
         <Route path="/cart" element={<GetCart userId={2} />} />
         <Route path='/users/register' element={<Register />} />
