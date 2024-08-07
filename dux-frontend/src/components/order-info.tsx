@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { duxServer } from "../common/dux-server";
 
-export default function Order( id ) {const [order, setOrder] = useState(null);
+export default function Order({ id }) {
+  const [order, setOrder] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
