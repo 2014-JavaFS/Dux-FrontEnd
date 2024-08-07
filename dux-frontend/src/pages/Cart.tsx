@@ -12,7 +12,7 @@ export default function Cart() {
 
   return (
     <>
-      <GetCart userId={userId} />
+      <GetCart />
       <br />
       <button onClick={() => handleCheckout()}>Checkout</button>
     </>

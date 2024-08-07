@@ -45,7 +45,7 @@ export default function User( {username} ) {
             <td>{user.email}</td>
           </tr>
           <tr>
-            <td>rarity:</td>
+            <td>registration date:</td>
             <td>{user.registrationDate}</td>
           </tr>
         </tbody>
