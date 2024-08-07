@@ -9,7 +9,8 @@ export default function Navbar(){
             <nav>
                 <NavLink to='/'>Home</NavLink>
                 <NavLink to={`/users/profile`}>Profile</NavLink>
-                <NavLink to={`/users/inventory`}>Dux</NavLink>
+                <NavLink to={`/users/inventory`}>myDux</NavLink>
+                <NavLink to={`/ducks`}>allDux</NavLink>
                 <NavLink to='/users/cart'>Cart</NavLink>
             </nav>
         </>

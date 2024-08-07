@@ -1,15 +1,15 @@
 import { useContext, useState } from "react";
 import UserContext from "../contexts/userContext";
 import { duxServer } from "../common/dux-server";
-import UserContext from "../contexts/userContext";
 
 // probably using a direct input Id for now but need to be auto getting this
 // id from the persisted id of the logged in user from a context object probably
 
-export default function GetCart({}) {
+export default function GetCart() {
   const [cart, setCart] = useState([]);
-  const [error, setError] = useState(null);
+  const [error] = useState(null);
   const { user } = useContext(UserContext);
+  //const user = 1;
 
   let userIdCart;
 

@@ -1,4 +1,22 @@
-export default function Order({ order }) {
+import { useEffect, useState } from "react";
+import { duxServer } from "../common/dux-server";
+
+export default function Order( id ) {const [order, setOrder] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    duxServer
+      .get(`/orders/${id}`)
+      .then((response) => {
+        setOrder(response.data);
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  }, [id]);
+
+  if (error) return <div>Error: {error}, so no</div>;
+  if (!order) return <div>no</div>;
   return (
     <div className="card">
       <table bgcolor="333333" align="center">

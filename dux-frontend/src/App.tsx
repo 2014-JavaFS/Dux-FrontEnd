@@ -51,46 +51,46 @@ function App() {
 
   return (
     <>
-    <UserContext.Provider value= {{user, userLogin, userLogout}} >
-      <Navbar></Navbar>
-      <table>
-        <tbody>
-          <tr>
-            <td>
-              <input type="text" ref={duckIdInput}></input>
-              <button onClick={handleDuckClick}>search by duck id</button> 
-            </td>
-            <td>
-              <input type="text" ref={orderIdInput}></input>
-              <button onClick={handleOrderClick}>search by order id</button>
-            </td>
-            <td>
-              <input type="text" ref={usernameInput}></input>
-              <button onClick={handleUserClick}>search by username</button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <Duck id={duckId} />
-            </td>
-            <td>
-              <Order id={orderId} />
-            </td>
-            <td>
-              <User username={username} />
-            </td>
-          </tr>
-        </tbody> 
-      </table> 
-      <DuckList />
-      <div>
-        <LoginBox></LoginBox>
-      </div>
-      <div>
-        <GetCart/>
-      </div>
+      <UserContext.Provider value={{ user, userLogin, userLogout }}>
+        <Navbar></Navbar>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <input type="text" ref={duckIdInput}></input>
+                <button onClick={handleDuckClick}>search by duck id</button>
+              </td>
+              <td>
+                <input type="text" ref={orderIdInput}></input>
+                <button onClick={handleOrderClick}>search by order id</button>
+              </td>
+              <td>
+                <input type="text" ref={usernameInput}></input>
+                <button onClick={handleUserClick}>search by username</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <Duck id={duckId} />
+              </td>
+              <td>
+                <Order id={orderId} />
+              </td>
+              <td>
+                <User username={username} />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <DuckList />
+        <div>
+          <LoginBox></LoginBox>
+        </div>
+        <div>
+          <GetCart />
+        </div>
       </UserContext.Provider>
-    </> 
+    </>
   );
 }
 

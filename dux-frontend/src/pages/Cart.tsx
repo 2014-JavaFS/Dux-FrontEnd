@@ -2,10 +2,10 @@ import GetCart from "../components/get-cart";
 import { duxServer } from "../common/dux-server";
 
 export default function Cart() {
-  const userId = 2; //should replace with context
+  const userId = 1; //should replace with context
 
   function handleCheckout() {
-    duxServer.get(`/orders/checkout?userId=${userId}`).catch((error) => {
+    duxServer.patch(`/orders/checkout?userId=${userId}`).catch((error) => {
       console.log(error.message);
     });
   }
