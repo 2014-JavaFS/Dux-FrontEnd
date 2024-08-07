@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { duxServer } from '../common/dux-server';
 
 function formatDate(date: Date) {
@@ -67,6 +67,8 @@ export default function Register(){
             </form>
             
             <button type='submit' onClick={submitInfo}>Submit</button>
+
+            <NavLink to='/login'>Already have an account? Login here.</NavLink>
         </>
     );
 }
