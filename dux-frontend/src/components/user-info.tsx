@@ -1,19 +1,17 @@
 import { useEffect, useState } from "react";
+import { duxServer } from "../common/dux-server";
 
 // "Binding element 'username' implicitly has an 'any' type.ts(7031)"
 // dont know how to fix, but it seems to work anyway so... ¯\_(ツ)_/¯
-function User({ username }) {
+export default function User( username ) {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/users/${username}`, { method: "GET" })
+    duxServer
+      .get(`/users/${username}`)
       .then((response) => {
-        if (!response.ok) throw new Error("Network response was not ok");
-        return response.json();
-      })
-      .then((data) => {
-        setUser(data);
+        setUser(response.data);
       })
       .catch((error) => {
         setError(error.message);
@@ -55,5 +53,3 @@ function User({ username }) {
     </div>
   );
 }
-
-export default User;

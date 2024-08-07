@@ -2,6 +2,8 @@ import { useRef, useState } from "react";
 import "./App.css";
 import Duck from "./components/duck-info";
 import DuckList from "./components/duck-list";
+import GetCart from "./components/get-cart";
+import Navbar from "./components/navbar";
 import Order from "./components/order-info";
 import User from "./components/user-info";
 
@@ -36,6 +38,7 @@ function App() {
 
   return (
     <>
+      <Navbar/>
       <table>
         <tbody>
           <tr>
@@ -66,6 +69,11 @@ function App() {
         </tbody>
       </table>
       <DuckList />
+      <div>
+        {//currently using the same input as orderId for easy testing
+        }
+        <GetCart userId = {orderId}/>
+      </div>
     </>
   );
 }
