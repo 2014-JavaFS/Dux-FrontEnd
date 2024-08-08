@@ -10,6 +10,7 @@ import Cart from "./pages/Cart.tsx";
 import Navbar from "./components/navbar.tsx";
 import LoginBox from "./components/login.tsx";
 import UserContext from "./contexts/userContext.tsx";
+import MyDuckList from "./components/my-duck-list.tsx";
 
 {
   //19 is hardcoded. 23 is hardcoded
