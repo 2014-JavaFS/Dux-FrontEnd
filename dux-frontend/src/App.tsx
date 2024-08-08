@@ -52,7 +52,6 @@ function App() {
   return (
     <>
       <UserContext.Provider value={{ user, userLogin, userLogout }}>
-        <Navbar></Navbar>
         <table>
           <tbody>
             <tr>
@@ -82,13 +81,13 @@ function App() {
             </tr>
           </tbody>
         </table>
-        <DuckList />
         <div>
           <LoginBox></LoginBox>
         </div>
         <div>
           <GetCart />
         </div>
+        <DuckList />
       </UserContext.Provider>
     </>
   );
