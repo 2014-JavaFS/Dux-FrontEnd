@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import "./App.css";
+import "./home.css";
 import Duck from "./components/duck-info";
 import DuckList from "./components/duck-list";
 import GetCart from "./components/get-cart";
@@ -9,7 +9,7 @@ import User from "./components/user-info";
 import UserContext from "./contexts/userContext";
 import LoginBox from "./components/login";
 
-function App() {
+function Home() {
   //const username = "user2";
   //const duckId = 5;
   //const orderId = 4;
@@ -34,15 +34,6 @@ function App() {
 
   // setting the user variable for the context (this will contains the user Id)
   // as well as setting two functions that will be used to manipulate the context variable 'user'
-  const [user, setUser] = useState(null);
-
-  const userLogin = (userData) => {
-    setUser(userData);
-  };
-
-  const userLogout = () => {
-    setUser(null);
-  };
 
   // FIXME: no idea why but once an invalid input is given it completely
   // breaks and will not allow any additional input, even if the following
@@ -51,7 +42,7 @@ function App() {
 
   return (
     <>
-      <UserContext.Provider value={{ user, userLogin, userLogout }}>
+
         <table>
           <tbody>
             <tr>
@@ -88,9 +79,9 @@ function App() {
           <GetCart />
         </div>
         <DuckList />
-      </UserContext.Provider>
+
     </>
   );
 }
 
-export default App;
+export default Home;
