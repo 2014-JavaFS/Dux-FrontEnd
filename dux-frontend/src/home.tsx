@@ -5,7 +5,7 @@ import DuckList from "./components/duck-list";
 import GetCart from "./components/get-cart";
 import Navbar from "./components/navbar";
 import Order from "./components/order-info";
-import User from "./components/user-info";
+//import User from "./components/user-info";
 import UserContext from "./contexts/userContext";
 import LoginBox from "./components/login";
 
@@ -65,9 +65,6 @@ function Home() {
               </td>
               <td>
                 <Order id={orderId} />
-              </td>
-              <td>
-                <User username={username} />
               </td>
             </tr>
           </tbody>
