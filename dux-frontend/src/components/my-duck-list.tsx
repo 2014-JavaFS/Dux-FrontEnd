@@ -11,16 +11,18 @@ export default function MyDuckList() {
   const { user } = useContext(UserContext);
   //const user = 1;
 
+  const userId = user;
+
   useEffect(() => {
     duxServer
-      .get(`/orders/history?userId=${user}`)
+      .get(`/orders/history?userId=${userId}`)
       .then((response) => {
         setDucks(response.data);
       })
       .catch((error) => {
         setError(error.message);
       });
-  }, [user]);
+  }, [userId]);
 
   if (error) return <div>Error: {error}, so no</div>;
   if (!ducks) return <div>no</div>;
