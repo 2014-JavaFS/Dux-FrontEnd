@@ -35,8 +35,8 @@ export default function App(){
           <Route path="/" element={<Navbar />}>
             <Route index element={<Home />} />
             <Route path="login" element={<LoginBox />} />
-            <Route path="users/profile" element={<User username="user1" />} />
-            <Route path="users/inventory" element={<MyDuckList />}/>
+            <Route path="users/profile" element={<User/>} />
+            <Route path="users/inventory" />
             <Route path="ducks" element={<DuckList />} />
             <Route path="users/register" element={<Register />} />
             <Route path="cart" element={<Cart />} />
