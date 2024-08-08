@@ -2,6 +2,7 @@ import { useContext, useRef, useState } from "react";
 import UserContext from "../contexts/userContext";
 import { duxServer } from "../common/dux-server";
 import GetCart from "./get-cart";
+import '../styles.css';
 
 export default function LoginBox(){
     const { user, userLogin, userLogout } = useContext(UserContext);
@@ -51,7 +52,7 @@ export default function LoginBox(){
       <div className="login-container">
                 <input id="emailInput" type="email" placeholder="please enter email" ref={emailInput}/>
                 <input id="passwordInput" type="password" placeholder="please enter password" ref={passwordInput}/>
-                <button onClick={login}>Login</button>
+                <button className="button" onClick={login}>Login</button>
                 
                 {status !== 0 ? 
                     <p>{

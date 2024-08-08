@@ -1,16 +1,14 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import App from "./App.tsx";
-import DuckList from "./components/duck-list.tsx";
-import GetCart from "./components/get-cart.tsx";
-import Register from './components/register.tsx';
-import User from './components/user-info.tsx';
-import "./index.css";
 
-{
-  //19 is hardcoded. 23 is hardcoded
-}
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import App from './App.tsx'
+import DuckList from "./components/duck-list.tsx"
+import GetCart from "./components/get-cart.tsx"
+import User from './components/user-info.tsx'
+import './index.css'
+import './styles.css'
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
@@ -18,9 +16,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Route path='/' element={<App />} />
         <Route path='/users/profile' element={<User username='user1'/>} />
         <Route path='/users/inventory' />
+        <Route path="/" element={<App />} />
         <Route path="/ducks" element={<DuckList />} />
-        <Route path='/users/register' element={<Register />} />
-        <Route path="/cart" />
+        <Route path="/cart" element={<GetCart userId={2} />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

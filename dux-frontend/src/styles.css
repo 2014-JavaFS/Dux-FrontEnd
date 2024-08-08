@@ -1,0 +1,116 @@
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+  
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #9c5656;
+    background-image: url(https://ibb.co/MDHP1Zq);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: goldenrod;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+   
+  }
+  
+  .search-table {
+    width: 100%;
+    margin-bottom: 80px;
+    border-collapse: collapse;
+    background-color: aqua;
+  }
+
+  .search-table {
+    width: 100%;
+    margin-bottom: 10px;
+    border-collapse: collapse;
+    background-color: aqua;
+  }
+  
+  .search-row {
+    background-color: rgb(187, 228, 116);
+  }
+  
+  .search-cell {
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .search-button {
+    width: 100%;
+    padding: 5px;
+    background-color: #4CAF50;
+    color: rgb(112, 35, 35);
+    border: none;
+    cursor: pointer;
+  }
+  
+  .search-button:hover {
+    background-color: #90ce2c;
+  }
+  
+  .content-row {
+    background-color: #89af9d;
+  }
+  
+  .content-cell {
+    padding: 15px;
+    border: 1px solid #ddd;
+  }
+  
+  .duck-list {
+    margin-top: 20px;
+  }
+  
+  .cart-container {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+  }
+
+  .navbar{
+    background-color:bisque;
+  }
+
+  .homenav{
+    float: left;
+    padding-left: 2%;
+    padding-right: 2%;
+    
+  }
+
+  .duxnav {
+    float: left;
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+
+  .profilenav{
+    float: left;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+    .cartnav {
+        float: left;
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+

@@ -1,13 +1,12 @@
 import { useRef, useState } from "react";
-import "./App.css";
+
+import "./styles.css";
 import Duck from "./components/duck-info";
 import DuckList from "./components/duck-list";
 import GetCart from "./components/get-cart";
 import Navbar from "./components/navbar";
 import Order from "./components/order-info";
 import User from "./components/user-info";
-import UserContext from "./contexts/userContext";
-import LoginBox from "./components/login";
 
 
 function App() {
@@ -33,18 +32,6 @@ function App() {
     setUsername(usernameInput.current.value);
   }
 
-  // setting the user variable for the context (this will contains the user Id)
-  // as well as setting two functions that will be used to manipulate the context variable 'user'
-  const [user, setUser] = useState(null);
-
-  const userLogin = (userData) => {
-    setUser(userData);
-  };
-
-  const userLogout = () => {
-    setUser(null);
-  };
-
   // FIXME: no idea why but once an invalid input is given it completely
   // breaks and will not allow any additional input, even if the following
   // input is perfectly valid hopefully might just get resolved when moving
@@ -52,46 +39,45 @@ function App() {
 
   return (
     <>
-    <UserContext.Provider value= {{user, userLogin, userLogout}} >
-      <Navbar></Navbar>
-      <table>
-        <tbody>
-          <tr>
-            <td>
-              <input type="text" ref={duckIdInput}></input>
-              <button onClick={handleDuckClick}>search by duck id</button> 
-            </td>
-            <td>
-              <input type="text" ref={orderIdInput}></input>
-              <button onClick={handleOrderClick}>search by order id</button>
-            </td>
-            <td>
-              <input type="text" ref={usernameInput}></input>
-              <button onClick={handleUserClick}>search by username</button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <Duck id={duckId} />
-            </td>
-            <td>
-              <Order id={orderId} />
-            </td>
-            <td>
-              <User username={username} />
-            </td>
-          </tr>
-        </tbody> 
-      </table> 
-      <DuckList />
-      <div>
-        <LoginBox></LoginBox>
-      </div>
-      <div>
-        <GetCart/>
-      </div>
-      </UserContext.Provider>
-    </> 
+     
+  <Navbar />
+  <div className="main-container">
+    <div class="item1">Dux!</div>
+    <table className="search-table">
+      <tbody>
+        <tr className="search-row">
+          <td className="search-cell">
+            <input type="text" ref={duckIdInput} className="search-input" />
+            <button onClick={handleDuckClick} className="search-button">Duck ID</button>
+          </td>
+          <td className="search-cell">
+            <input type="text" ref={orderIdInput} className="search-input" />
+            <button onClick={handleOrderClick} className="search-button">Search by order id</button>
+          </td>
+          <td className="search-cell">
+            <input type="text" ref={usernameInput} className="search-input" />
+            <button onClick={handleUserClick} className="search-button">Search by username</button>
+          </td>
+        </tr>
+        <tr className="content-row">
+          <td className="content-cell">
+            <Duck id={duckId} />
+          </td>
+          <td className="content-cell">
+            <Order id={orderId} />
+          </td>
+          <td className="content-cell">
+            <User username={username} />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <DuckList />
+    <div className="cart-container">
+      <GetCart userId={orderId} />
+    </div>
+  </div>
+</>
   );
 }
 

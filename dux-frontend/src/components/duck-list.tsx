@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { duxServer } from "../common/dux-server";
-
+import '../styles.css';
 // "Binding element 'id' implicitly has an 'any' type.ts(7031)"
 // dont know how to fix, but it seems to work anyway so... ¯\_(ツ)_/¯
 export default function DuckList() {
