@@ -4,7 +4,7 @@ import Duck from "./components/duck-info";
 import DuckList from "./components/duck-list";
 import GetCart from "./components/get-cart";
 import Order from "./components/order-info";
-import User from "./components/user-info";
+//import User from "./components/user-info";
 import LoginBox from "./components/login";
 
 function Home() {
@@ -24,7 +24,7 @@ function Home() {
     setOrderId(orderIdInput.current.value);
   }
 
-  const [username, setUsername] = useState("user1");
+  const [, setUsername] = useState("user1");
   const usernameInput = useRef(null);
   function handleUserClick() {
     setUsername(usernameInput.current.value);
@@ -63,9 +63,6 @@ function Home() {
               </td>
               <td>
                 <Order id={orderId} />
-              </td>
-              <td>
-                <User username={username} />
               </td>
             </tr>
           </tbody>
