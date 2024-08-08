@@ -11,6 +11,8 @@ export default function DuckList() {
   const { user } = useContext(UserContext);
   //const user = 1;
 
+  const userId = user;
+
   useEffect(() => {
     duxServer
       .get("/ducks")
@@ -29,7 +31,7 @@ export default function DuckList() {
   function handleAddToCart(duckId) {
     duxServer
       .post(
-        `/orders/addToCart?buyer=${user}&seller=${seller}&duck=${duckId}&quantity=1`
+        `/orders/addToCart?buyer=${userId}&seller=${seller}&duck=${duckId}&quantity=1`
       )
       .catch((error) => {
         setError(error.message);
