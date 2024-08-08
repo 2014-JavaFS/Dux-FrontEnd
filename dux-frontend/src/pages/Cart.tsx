@@ -1,11 +1,14 @@
 import GetCart from "../components/get-cart";
 import { duxServer } from "../common/dux-server";
+import { useContext } from "react";
+import UserContext from "../contexts/userContext";
 
 export default function Cart() {
-  const userId = 1; //should replace with context
+  const { user } = useContext(UserContext);
+  //const user = 1;
 
   function handleCheckout() {
-    duxServer.patch(`/orders/checkout?userId=${userId}`).catch((error) => {
+    duxServer.patch(`/orders/checkout?userId=${user}`).catch((error) => {
       console.log(error.message);
     });
   }

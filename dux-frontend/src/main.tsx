@@ -10,6 +10,7 @@ import Cart from "./pages/Cart.tsx";
 import Navbar from "./components/navbar.tsx";
 import LoginBox from "./components/login.tsx";
 import UserContext from "./contexts/userContext.tsx";
+import MyDuckList from "./components/my-duck-list.tsx";
 
 {
   //19 is hardcoded. 23 is hardcoded
@@ -35,7 +36,7 @@ export default function App(){
             <Route index element={<Home />} />
             <Route path="login" element={<LoginBox />} />
             <Route path="users/profile" element={<User username="user1" />} />
-            <Route path="users/inventory" />
+            <Route path="users/inventory" element={<MyDuckList />}/>
             <Route path="ducks" element={<DuckList />} />
             <Route path="users/register" element={<Register />} />
             <Route path="cart" element={<Cart />} />

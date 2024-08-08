@@ -5,7 +5,7 @@ import React from "react";
 
 // "Binding element 'id' implicitly has an 'any' type.ts(7031)"
 // dont know how to fix, but it seems to work anyway so... ¯\_(ツ)_/¯
-export default function DuckList() {
+export default function MyDuckList() {
   const [ducks, setDucks] = useState([]);
   const [error, setError] = useState(null);
   const { user } = useContext(UserContext);
@@ -13,48 +13,33 @@ export default function DuckList() {
 
   useEffect(() => {
     duxServer
-      .get("/ducks")
+      .get(`/orders/history?userId=${user}`)
       .then((response) => {
         setDucks(response.data);
       })
       .catch((error) => {
         setError(error.message);
       });
-  }, []);
+  }, [user]);
 
   if (error) return <div>Error: {error}, so no</div>;
   if (!ducks) return <div>no</div>;
-
-  const seller = 33;
-  function handleAddToCart(duckId) {
-    duxServer
-      .post(
-        `/orders/addToCart?buyer=${user}&seller=${seller}&duck=${duckId}&quantity=1`
-      )
-      .catch((error) => {
-        setError(error.message);
-      });
-  }
 
   return (
     <>
       <h2>
         <u>DUCKS</u>
+        <p>all your ducks in a row</p>
       </h2>
-      {ducks.map((duck) => (
-        <React.Fragment key={duck.duckId}>
+      {ducks.map((order) => (
+        <React.Fragment key={order.duck.duckId}>
           <br />
-          <div key={duck.duckId} className="card">
-          <h4>{duck.name}</h4>
-          <h6>{duck.description}</h6>
+          <div className="card">
+            <h4>{order.duck.name}</h4>
+            <h6>{order.duck.description}</h6>
             <h5>
-              {duck.rarity} — {duck.condition}
+              {order.duck.rarity} — {order.duck.condition}
             </h5>
-            <p>${duck.price}</p>
-            <br />
-            <button type="submit" onClick={() => handleAddToCart(duck.duckId)}>
-              Add to Cart
-            </button>
           </div>
         </React.Fragment>
       ))}
