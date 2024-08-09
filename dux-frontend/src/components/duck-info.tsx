@@ -9,14 +9,14 @@ export default function Duck({ name }) {
 
   useEffect(() => {
     duxServer
-      .get(`/users/${name}`)
+      .get(`/ducks/name?name=${name}`)
       .then((response) => {
         setDuck(response.data);
       })
       .catch((error) => {
         setError(error.message);
       });
-  }, []);
+  }, [name]);
 
   if (error) return <div>Error: {error}, so no</div>;
   if (!duck) return <div>no</div>;
