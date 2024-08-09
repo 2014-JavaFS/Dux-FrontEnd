@@ -15,7 +15,7 @@ import MyDuckList from "./components/my-duck-list.tsx";
 {
   //19 is hardcoded. 23 is hardcoded
 }
-export default function App(){
+export default function App() {
   const [user, setUser] = useState(null);
 
   const userLogin = (userData) => {
@@ -26,28 +26,25 @@ export default function App(){
     setUser(null);
   };
 
-  return(
-    
-   <React.StrictMode>
+  return (
+    <React.StrictMode>
       <BrowserRouter>
-      <UserContext.Provider value={{ user, userLogin, userLogout }}>
-        <Routes>
-          <Route path="/" element={<Navbar />}>
-            <Route index element={<Home />} />
-            <Route path="login" element={<LoginBox />} />
-            <Route path="users/profile" element={<User/>} />
-            <Route path="users/inventory" />
-            <Route path="ducks" element={<DuckList />} />
-            <Route path="users/register" element={<Register />} />
-            <Route path="cart" element={<Cart />} />
-          </Route>
-        </Routes>
+        <UserContext.Provider value={{ user, userLogin, userLogout }}>
+          <Routes>
+            <Route path="/" element={<Navbar />}>
+              <Route index element={<Home />} />
+              <Route path="login" element={<LoginBox />} />
+              <Route path="users/profile" element={<User />} />
+              <Route path="users/inventory" element={<MyDuckList />} />
+              <Route path="ducks" element={<DuckList />} />
+              <Route path="users/register" element={<Register />} />
+              <Route path="cart" element={<Cart />} />
+            </Route>
+          </Routes>
         </UserContext.Provider>
       </BrowserRouter>
     </React.StrictMode>
-  )   
+  );
 }
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App/>)
-
-
+root.render(<App />);

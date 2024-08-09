@@ -20,7 +20,7 @@ export default function Navbar() {
           <NavLink to={`/ducks`}>Dux</NavLink>
         </div>
         <div className="cartnav">
-          <NavLink to="/users/cart">Cart</NavLink>
+          <NavLink to={`/cart`}>Cart</NavLink>
         </div>
       </nav>
 
