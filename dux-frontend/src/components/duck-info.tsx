@@ -1,22 +1,22 @@
 import { useEffect, useState } from "react";
 import { duxServer } from "../common/dux-server";
-
+import '../styles.css';
 // "Binding element 'id' implicitly has an 'any' type.ts(7031)"
 // dont know how to fix, but it seems to work anyway so... ¯\_(ツ)_/¯
-export default function Duck({ id }) {
+export default function Duck({ name }) {
   const [duck, setDuck] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     duxServer
-      .get(`/users/${id}`)
+      .get(`/ducks/name?name=${name}`)
       .then((response) => {
         setDuck(response.data);
       })
       .catch((error) => {
         setError(error.message);
       });
-  }, [id]);
+  }, [name]);
 
   if (error) return <div>Error: {error}, so no</div>;
   if (!duck) return <div>no</div>;

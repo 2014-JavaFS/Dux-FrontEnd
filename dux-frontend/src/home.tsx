@@ -3,7 +3,6 @@ import "./home.css";
 import Duck from "./components/duck-info";
 import DuckList from "./components/duck-list";
 import GetCart from "./components/get-cart";
-import Order from "./components/order-info";
 //import User from "./components/user-info";
 import LoginBox from "./components/login";
 
@@ -12,23 +11,11 @@ function Home() {
   //const duckId = 5;
   //const orderId = 4;
 
-  const [duckId, setDuckId] = useState(1);
-  const duckIdInput = useRef(null);
+  const [duckName, setDuckName] = useState("pirate");
+  const duckNameInput = useRef(null);
   function handleDuckClick() {
-    setDuckId(duckIdInput.current.value);
-  }
-
-  const [orderId, setOrderId] = useState(1);
-  const orderIdInput = useRef(null);
-  function handleOrderClick() {
-    setOrderId(orderIdInput.current.value);
-  }
-
-  const [, setUsername] = useState("user1");
-  const usernameInput = useRef(null);
-  function handleUserClick() {
-    setUsername(usernameInput.current.value);
-  }
+    setDuckName(duckNameInput.current.value);
+  } 
 
   // setting the user variable for the context (this will contains the user Id)
   // as well as setting two functions that will be used to manipulate the context variable 'user'
@@ -45,25 +32,14 @@ function Home() {
           <tbody>
             <tr>
               <td>
-                <input type="text" ref={duckIdInput}></input>
-                <button onClick={handleDuckClick}>search by duck id</button>
-              </td>
-              <td>
-                <input type="text" ref={orderIdInput}></input>
-                <button onClick={handleOrderClick}>search by order id</button>
-              </td>
-              <td>
-                <input type="text" ref={usernameInput}></input>
-                <button onClick={handleUserClick}>search by username</button>
-              </td>
+                <input type="text" ref={duckNameInput}></input>
+                <button onClick={handleDuckClick}>search by duck name</button>
+              </td> 
             </tr>
             <tr>
               <td>
-                <Duck id={duckId} />
-              </td>
-              <td>
-                <Order id={orderId} />
-              </td>
+                <Duck name={duckName} />
+              </td> 
             </tr>
           </tbody>
         </table>
