@@ -39,43 +39,40 @@ function App() {
 
   return (
     <>
-     
+     <div className= "logo">
+     <h1>Dux!</h1>
+     </div>
   <Navbar />
   <div className="main-container">
-    <div class="item1">Dux!</div>
-    <table className="search-table">
-      <tbody>
-        <tr className="search-row">
-          <td className="search-cell">
-            <input type="text" ref={duckIdInput} className="search-input" />
-            <button onClick={handleDuckClick} className="search-button">Duck ID</button>
-          </td>
-          <td className="search-cell">
-            <input type="text" ref={orderIdInput} className="search-input" />
-            <button onClick={handleOrderClick} className="search-button">Search by order id</button>
-          </td>
-          <td className="search-cell">
-            <input type="text" ref={usernameInput} className="search-input" />
-            <button onClick={handleUserClick} className="search-button">Search by username</button>
-          </td>
-        </tr>
-        <tr className="content-row">
-          <td className="content-cell">
-            <Duck id={duckId} />
-          </td>
-          <td className="content-cell">
-            <Order id={orderId} />
-          </td>
-          <td className="content-cell">
-            <User username={username} />
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <DuckList />
-    <div className="cart-container">
-      <GetCart userId={orderId} />
+  <div className="search-area">
+    <div className="search-cell">
+      <input type="text" ref={duckIdInput} className="search-input" />
+      <button onClick={handleDuckClick} className="search-button">Duck ID</button>
     </div>
+    <div className="search-cell">
+      <input type="text" ref={orderIdInput} className="search-input" />
+      <button onClick={handleOrderClick} className="search-button">Search by order id</button>
+    </div>
+    <div className="search-cell">
+      <input type="text" ref={usernameInput} className="search-input" />
+      <button onClick={handleUserClick} className="search-button">Search by username</button>
+    </div>
+  </div>
+  <div className="content-area">
+    <div className="content-cell">
+      <Duck id={duckId} />
+    </div>
+    <div className="content-cell">
+      <Order id={orderId} />
+    </div>
+    <div className="content-cell">
+      <User username={username} />
+    </div>
+  </div>
+  <DuckList className="duck-list" />
+  <div className="cart-container">
+    <GetCart userId={orderId} />
+  </div>
   </div>
 </>
   );
