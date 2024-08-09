@@ -3,7 +3,6 @@ import "./home.css";
 import Duck from "./components/duck-info";
 import DuckList from "./components/duck-list";
 import GetCart from "./components/get-cart";
-import Order from "./components/order-info";
 //import User from "./components/user-info";
 import LoginBox from "./components/login";
 
@@ -15,7 +14,7 @@ function Home() {
   const [duckName, setDuckName] = useState("pirate");
   const duckNameInput = useRef(null);
   function handleDuckClick() {
-    setDuckName(duckNameInput.current);
+    setDuckName(duckNameInput.current.value);
   } 
 
   // setting the user variable for the context (this will contains the user Id)
